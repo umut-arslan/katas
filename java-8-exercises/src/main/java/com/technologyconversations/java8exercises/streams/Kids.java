@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Kids {
@@ -22,7 +23,7 @@ public class Kids {
     }
 
     public static Set<String> getKidNames(List<Person> people) {
-        return null;
+        return people.stream().filter(person -> person.age() < 18).map(Person::name).collect(Collectors.toSet());
     }
 
 }

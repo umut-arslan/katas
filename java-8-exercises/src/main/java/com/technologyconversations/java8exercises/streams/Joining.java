@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Joining {
@@ -24,8 +25,7 @@ public class Joining {
     }
 
     public static String namesToString(List<Person> people) {
-        return people.stream().collect(Collectors.)
-
+        return people.stream().map(Person::name).collect(Collectors.joining(", ","Names: ", "."));
     }
 
 }

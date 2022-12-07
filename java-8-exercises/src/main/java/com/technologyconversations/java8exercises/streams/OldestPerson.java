@@ -4,6 +4,7 @@ import com.technologyconversations.java8exercises.streams.model.Person;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+import java.util.Comparator;
 import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -20,7 +21,7 @@ public class OldestPerson {
     }
 
     public static Person getOldestPerson(List<Person> people) {
-        return null;
+        return people.stream().max(Comparator.comparingInt(Person::age)).get();
     }
 
 }

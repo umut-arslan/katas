@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Partitioning {
@@ -23,7 +24,7 @@ public class Partitioning {
     }
 
     public static Map<Boolean, List<Person>> partitionAdults(List<Person> people) {
-        return null;
+        return people.stream().collect(Collectors.partitioningBy(p->p.age()>18));
     }
 
 }
