@@ -65,4 +65,12 @@ class GameOfLifeTest {
 
     assertEquals(listOfLivingCells, gol.getSurvivingGeneration());
   }
+  @Test
+  void getBirths(){
+    List<Cell> listOfLivingCells = List.of(new Cell(0, 0), new Cell(1, 0) ,new Cell(1, 1));
+    GameOfLife gol = new GameOfLife(listOfLivingCells);
+
+    assertEquals(List.of(new Cell(0,1)), gol.getBirths());
+
+  }
 }

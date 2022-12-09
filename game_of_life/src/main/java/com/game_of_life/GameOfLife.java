@@ -1,6 +1,7 @@
 package com.game_of_life;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Hello world!
@@ -42,6 +43,11 @@ public class GameOfLife {
     }
 
     public List<Cell> getSurvivingGeneration() {
-        return List.of();
+        return listOfAliveCells.stream()
+          .filter(i -> getCountOfAliveNeighbours(i) <= 3 && getCountOfAliveNeighbours(i) >= 2).toList();
+    }
+
+    public List<Cell> getBirths() {
+        return null;
     }
 }
