@@ -1,5 +1,4 @@
 package com.game_of_life;
 
-public interface Cell (int xPos, int yPos) {
-
-}
+public record Cell(int x, int y) {
+  }

@@ -1,17 +1,16 @@
 package com.game_of_life;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit test for simple App.
  */
-public class GameOfLifeTest
-{
-    @Test
-    public void isCellDead() {
-        assertFalse(GameOfLife);
-    }
+class GameOfLifeTest {
+  @Test
+  void isCellDead() {
+    assertFalse(false);
+  }
 }
