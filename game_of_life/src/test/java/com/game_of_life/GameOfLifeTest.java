@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 //   2. Any live cell with more than three live neighbours dies, as if by overcrowding.
 //   3. Any live cell with two or three live neighbours lives on to the next generation.
 //   4. Any dead cell with exactly three live neighbours becomes a live cell.
+
 class GameOfLifeTest {
   @Test
   void returnListOfAliveCells() {
@@ -55,9 +56,13 @@ class GameOfLifeTest {
     GameOfLife gol = new GameOfLife(listOfLivingCells);
 
     assertEquals(1, gol.getCountOfAliveNeighbours(new Cell(1,1)));
-
-
   }
 
+  @Test
+  void getSurvivingGeneration() {
+    List<Cell> listOfLivingCells = List.of(new Cell(0, 0), new Cell(1, 0) ,new Cell(1, 1));
+    GameOfLife gol = new GameOfLife(listOfLivingCells);
 
+    assertEquals(listOfLivingCells, gol.getSurvivingGeneration());
+  }
 }

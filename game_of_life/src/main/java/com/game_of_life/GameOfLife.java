@@ -37,7 +37,11 @@ public class GameOfLife {
         return listOfAliveCells.contains(cell);
     }
 
-    public int getCountOfAliveNeighbours(Cell cell) {
-        return 0;
+    public long getCountOfAliveNeighbours(Cell cell) {
+        return getNeighbours(cell).stream().filter(this::isAlive).count();
+    }
+
+    public List<Cell> getSurvivingGeneration() {
+        return List.of();
     }
 }
