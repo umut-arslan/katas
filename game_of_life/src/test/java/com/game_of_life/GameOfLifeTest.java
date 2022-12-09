@@ -59,7 +59,7 @@ class GameOfLifeTest {
   }
 
   @Test
-  void getSurvivingGeneration() {
+  void getSurvivingCells() {
     List<Cell> listOfLivingCells = List.of(new Cell(0, 0), new Cell(1, 0) ,new Cell(1, 1));
     GameOfLife gol = new GameOfLife(listOfLivingCells);
 
@@ -69,8 +69,14 @@ class GameOfLifeTest {
   void getBirths(){
     List<Cell> listOfLivingCells = List.of(new Cell(0, 0), new Cell(1, 0) ,new Cell(1, 1));
     GameOfLife gol = new GameOfLife(listOfLivingCells);
-
     assertEquals(List.of(new Cell(0,1)), gol.getBirths());
+  }
 
+  @Test
+  void getNextGeneration() {
+    List<Cell> listOfLivingCells = List.of(new Cell(0, 0), new Cell(1, 0) ,new Cell(1, 1));
+    List<Cell> listOfLivingCellsNextGen = List.of(new Cell(0, 0), new Cell(1, 0) ,new Cell(1, 1), new Cell(0,1));
+    GameOfLife gol = new GameOfLife(listOfLivingCells);
+    assertEquals(listOfLivingCellsNextGen, gol.getNextGeneration());
   }
 }

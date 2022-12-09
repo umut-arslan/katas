@@ -47,7 +47,21 @@ public class GameOfLife {
           .filter(i -> getCountOfAliveNeighbours(i) <= 3 && getCountOfAliveNeighbours(i) >= 2).toList();
     }
 
+    public boolean isDead(Cell cell) {
+        return !isAlive(cell);
+    }
+
     public List<Cell> getBirths() {
-        return null;
+        return listOfAliveCells.stream()
+                .map(this::getNeighbours)
+                .flatMap(List::stream)
+                .distinct()
+                .filter(this::isDead)
+                .filter(cell -> getCountOfAliveNeighbours(cell)==3)
+                .toList();
+    }
+
+    public List<Cell> getNextGeneration() {
+        return List.of();
     }
 }
