@@ -2,6 +2,7 @@ package com.game_of_life;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Hello world!
@@ -62,6 +63,6 @@ public class GameOfLife {
     }
 
     public List<Cell> getNextGeneration() {
-        return List.of();
+        return Stream.concat(getSurvivingGeneration().stream(), getBirths().stream()).toList();
     }
 }
