@@ -15,7 +15,9 @@ class CodeCrackerTest {
     void getPositionInAlphabet() {
         final var alphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
         final String decryptionKey = "! ) \" ( £ * % & > < @ a b c d e f g h i j k l m n o";
+
         CodeCracker cc = new CodeCracker(alphabet, decryptionKey);
+
         assertThat(cc.getPositionInAlphabet("c")).isEqualTo(2);
     }
 
@@ -24,7 +26,9 @@ class CodeCrackerTest {
     void getLetterForPosition() {
         final String alphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
         final String decryptionKey = "! ) \" ( £ * % & > < @ a b c d e f g h i j k l m n o";
+
         CodeCracker cc = new CodeCracker(alphabet, decryptionKey);
+
         assertThat(cc.getLetterForPosition(2)).isEqualTo("\"");
     }
 
@@ -33,7 +37,9 @@ class CodeCrackerTest {
         final String letter = "a";
         final String alphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
         final String decryptionKey = "! ) \" ( £ * % & > < @ a b c d e f g h i j k l m n o";
+
         CodeCracker cc = new CodeCracker(alphabet, decryptionKey);
+
         assertThat(cc.encrypt(letter)).isEqualTo("!");
     }
 
@@ -42,7 +48,9 @@ class CodeCrackerTest {
         final String letter = "b";
         final String alphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
         final String decryptionKey = "! ) \" ( £ * % & > < @ a b c d e f g h i j k l m n o";
+
         CodeCracker cc = new CodeCracker(alphabet, decryptionKey);
+
         assertThat(cc.encrypt(letter)).isEqualTo(")");
     }
 
@@ -51,7 +59,9 @@ class CodeCrackerTest {
         final String word = "julius";
         final String alphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
         final String decryptionKey = "! ) \" ( £ * % & > < @ a b c d e f g h i j k l m n o";
+
         CodeCracker cc = new CodeCracker(alphabet, decryptionKey);
+
         assertThat(cc.encrypt(word)).isEqualTo("<ja>jh");
     }
 
@@ -60,7 +70,9 @@ class CodeCrackerTest {
         final String word = "not julius";
         final String alphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
         final String decryptionKey = "! ) \" ( £ * % & > < @ a b c d e f g h i j k l m n o";
+
         CodeCracker cc = new CodeCracker(alphabet, decryptionKey);
+
         assertThat(cc.encrypt(word)).isEqualTo("cdi <ja>jh");
     }
 
@@ -69,7 +81,9 @@ class CodeCrackerTest {
         final String word = "<ja>jh";
         final String alphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
         final String decryptionKey = "! ) \" ( £ * % & > < @ a b c d e f g h i j k l m n o";
+
         CodeCracker cc = new CodeCracker(alphabet, decryptionKey);
+
         assertThat(cc.decrypt(word)).isEqualTo("julius");
     }
 
@@ -78,7 +92,9 @@ class CodeCrackerTest {
         final String word = "cdi <ja>jh";
         final String alphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
         final String decryptionKey = "! ) \" ( £ * % & > < @ a b c d e f g h i j k l m n o";
+
         CodeCracker cc = new CodeCracker(alphabet, decryptionKey);
+
         assertThat(cc.decrypt(word)).isEqualTo("not julius");
     }
 
