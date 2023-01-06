@@ -4,11 +4,11 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.game_of_life</groupId>
-  <artifactId>game_of_life</artifactId>
+  <groupId>com.code_cracker</groupId>
+  <artifactId>code_cracker</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>game_of_life</name>
+  <name>code_cracker</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -22,7 +22,7 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
-      <version>5.8.1</version>
+      <version>5.9.1</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -71,15 +71,5 @@
         </plugin>
       </plugins>
     </pluginManagement>
-      <plugins>
-          <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-compiler-plugin</artifactId>
-              <configuration>
-                  <source>16</source>
-                  <target>16</target>
-              </configuration>
-          </plugin>
-      </plugins>
   </build>
 </project>
