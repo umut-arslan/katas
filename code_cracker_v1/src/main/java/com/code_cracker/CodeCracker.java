@@ -19,15 +19,23 @@ class CodeCracker
 
     public int getPositionInAlphabet(final String letter) {
         final String[] idx = alphabet.split(" ");
-        return Arrays.stream(idx).toList().indexOf(letter);
+        return Arrays
+                .stream(idx)
+                .toList()
+                .indexOf(letter);
     }
     public int getPositionInDecryptionKey(final String letter) {
         final String[] idx = decryptionKey.split(" ");
-        return Arrays.stream(idx).toList().indexOf(letter);
+        return Arrays
+                .stream(idx)
+                .toList()
+                .indexOf(letter);
     }
 
     public String encrypt(final String word) {
-        return word.chars().mapToObj(i -> (char) i)
+        return word
+                .chars()
+                .mapToObj(i -> (char) i)
                 .map(String::valueOf)
                 .map(this::getPositionInAlphabet).map(this::getLetterForPosition)
                 .collect(Collectors.joining());
@@ -50,9 +58,12 @@ class CodeCracker
     }
 
     public String decrypt(final String word) {
-        return word.chars().mapToObj(i -> (char) i)
+        return word
+                .chars()
+                .mapToObj(i -> (char) i)
                 .map(String::valueOf)
-                .map(this::getPositionInDecryptionKey).map(this::getDecryptionForPosition)
+                .map(this::getPositionInDecryptionKey)
+                .map(this::getDecryptionForPosition)
                 .collect(Collectors.joining());
     }
 }
