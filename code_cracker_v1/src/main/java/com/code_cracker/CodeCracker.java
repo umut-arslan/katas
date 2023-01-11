@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  *
  */
 @AllArgsConstructor
-public class CodeCracker
+class CodeCracker
 {
     private final String alphabet;
     private final String decryptionKey;
