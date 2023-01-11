@@ -9,11 +9,9 @@ import java.util.stream.Stream;
 
 /**
  * Hello world!
- *
  */
 @AllArgsConstructor
-class CodeCracker
-{
+class CodeCracker {
     private final String alphabet;
     private final String decryptionKey;
 
@@ -24,6 +22,7 @@ class CodeCracker
                 .toList()
                 .indexOf(letter);
     }
+
     public int getPositionInDecryptionKey(final String letter) {
         final String[] idx = decryptionKey.split(" ");
         return Arrays
