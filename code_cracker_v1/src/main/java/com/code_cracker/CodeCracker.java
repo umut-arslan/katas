@@ -1,5 +1,7 @@
 package com.code_cracker;
 
+import lombok.AllArgsConstructor;
+
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -9,14 +11,12 @@ import java.util.stream.Stream;
  * Hello world!
  *
  */
+@AllArgsConstructor
 public class CodeCracker
 {
     private final String alphabet;
     private final String decryptionKey;
-    public CodeCracker(String alphabet, String decryptionKey) {
-        this.alphabet = alphabet;
-        this.decryptionKey = decryptionKey;
-    }
+
     public int getPositionInAlphabet(final String letter) {
         final String[] idx = alphabet.split(" ");
         return Arrays.stream(idx).toList().indexOf(letter);
