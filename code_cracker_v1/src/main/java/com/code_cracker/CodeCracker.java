@@ -21,15 +21,6 @@ class CodeCracker {
                 .indexOf(letter);
     }
 
-    public String encrypt(final String word) {
-        return word
-                .chars()
-                .mapToObj(i -> (char) i)
-                .map(String::valueOf)
-                .map(letter -> getPosition(letter, false)).map(this::getLetterForPosition)
-                .collect(Collectors.joining());
-    }
-
     public String getLetterForPosition(final int i) {
         final String[] idx = decryptionKey.split(" ");
         if (i == -1) {
@@ -37,6 +28,7 @@ class CodeCracker {
         }
         return idx[i];
     }
+
 
     public String getDecryptionForPosition(final int i) {
         final String[] idx = alphabet.split(" ");
@@ -46,13 +38,13 @@ class CodeCracker {
         return idx[i];
     }
 
-    public String decrypt(final String word) {
+    public String crypt(final String word, final boolean decrypt) {
         return word
                 .chars()
                 .mapToObj(i -> (char) i)
                 .map(String::valueOf)
-                .map(letter -> getPosition(letter, true))
-                .map(this::getDecryptionForPosition)
+                .map(letter -> getPosition(letter, decrypt))
+                .map(!decrypt ? this::getLetterForPosition : this::getDecryptionForPosition)
                 .collect(Collectors.joining());
     }
 }

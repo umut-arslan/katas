@@ -39,7 +39,7 @@ class CodeCrackerTest {
 
         CodeCracker cc = new CodeCracker(alphabet, decryptionKey);
 
-        assertThat(cc.encrypt(letter)).isEqualTo("!");
+        assertThat(cc.crypt(letter, false)).isEqualTo("!");
     }
 
     @Test
@@ -50,7 +50,7 @@ class CodeCrackerTest {
 
         CodeCracker cc = new CodeCracker(alphabet, decryptionKey);
 
-        assertThat(cc.encrypt(letter)).isEqualTo(")");
+        assertThat(cc.crypt(letter, false)).isEqualTo(")");
     }
 
     @Test
@@ -61,7 +61,7 @@ class CodeCrackerTest {
 
         CodeCracker cc = new CodeCracker(alphabet, decryptionKey);
 
-        assertThat(cc.encrypt(word)).isEqualTo("<ja>jh");
+        assertThat(cc.crypt(word, false)).isEqualTo("<ja>jh");
     }
 
     @Test
@@ -72,7 +72,7 @@ class CodeCrackerTest {
 
         CodeCracker cc = new CodeCracker(alphabet, decryptionKey);
 
-        assertThat(cc.encrypt(word)).isEqualTo("cdi <ja>jh");
+        assertThat(cc.crypt(word, false)).isEqualTo("cdi <ja>jh");
     }
 
     @Test
@@ -83,7 +83,7 @@ class CodeCrackerTest {
 
         CodeCracker cc = new CodeCracker(alphabet, decryptionKey);
 
-        assertThat(cc.decrypt(word)).isEqualTo("julius");
+        assertThat(cc.crypt(word, true)).isEqualTo("julius");
     }
 
     @Test
@@ -94,7 +94,7 @@ class CodeCrackerTest {
 
         CodeCracker cc = new CodeCracker(alphabet, decryptionKey);
 
-        assertThat(cc.decrypt(word)).isEqualTo("not julius");
+        assertThat(cc.crypt(word, true)).isEqualTo("not julius");
     }
 
 }
