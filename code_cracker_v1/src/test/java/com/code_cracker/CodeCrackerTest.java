@@ -17,7 +17,7 @@ class CodeCrackerTest {
 
         CodeCracker cc = new CodeCracker(alphabet, decryptionKey);
 
-        assertThat(cc.getPositionInAlphabet("c")).isEqualTo(2);
+        assertThat(cc.getPosition("c", false)).isEqualTo(2);
     }
 
 

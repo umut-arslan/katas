@@ -3,9 +3,7 @@ package com.code_cracker;
 import lombok.AllArgsConstructor;
 
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Hello world!
@@ -15,16 +13,8 @@ class CodeCracker {
     private final String alphabet;
     private final String decryptionKey;
 
-    public int getPositionInAlphabet(final String letter) {
-        final String[] idx = alphabet.split(" ");
-        return Arrays
-                .stream(idx)
-                .toList()
-                .indexOf(letter);
-    }
-
-    public int getPositionInDecryptionKey(final String letter) {
-        final String[] idx = decryptionKey.split(" ");
+    public int getPosition(final String letter, final boolean decrypt) {
+        final String[] idx = !decrypt ? alphabet.split(" ") : decryptionKey.split(" ");
         return Arrays
                 .stream(idx)
                 .toList()
@@ -36,7 +26,7 @@ class CodeCracker {
                 .chars()
                 .mapToObj(i -> (char) i)
                 .map(String::valueOf)
-                .map(this::getPositionInAlphabet).map(this::getLetterForPosition)
+                .map(letter -> getPosition(letter, false)).map(this::getLetterForPosition)
                 .collect(Collectors.joining());
     }
 
@@ -61,7 +51,7 @@ class CodeCracker {
                 .chars()
                 .mapToObj(i -> (char) i)
                 .map(String::valueOf)
-                .map(this::getPositionInDecryptionKey)
+                .map(letter -> getPosition(letter, true))
                 .map(this::getDecryptionForPosition)
                 .collect(Collectors.joining());
     }
