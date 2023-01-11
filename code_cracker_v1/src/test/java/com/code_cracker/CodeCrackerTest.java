@@ -12,30 +12,40 @@ import static org.assertj.core.api.Assertions.*;
 class CodeCrackerTest {
     @Test
     void getPositionInAlphabet() {
-        final var alphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
-        final String decryptionKey = "! ) \" ( £ * % & > < @ a b c d e f g h i j k l m n o";
+        final var alphabet = "abcdefghijklmnopqrstuvwxyz";
+        final String decryptionKey = "!)\"(£*%&><@abcdefghijklmno";
 
         CodeCracker cc = new CodeCracker(alphabet, decryptionKey);
 
         assertThat(cc.getPosition("c", false)).isEqualTo(2);
     }
 
-
     @Test
-    void getLetterForPosition() {
-        final String alphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
-        final String decryptionKey = "! ) \" ( £ * % & > < @ a b c d e f g h i j k l m n o";
+    void getPositionInDecryptionKey() {
+        final var alphabet = "abcdefghijklmnopqrstuvwxyz";
+        final String decryptionKey = "!)\"(£*%&><@abcdefghijklmno";
 
         CodeCracker cc = new CodeCracker(alphabet, decryptionKey);
 
-        assertThat(cc.getLetterForPosition(2)).isEqualTo("\"");
+        assertThat(cc.getPosition("(", true)).isEqualTo(3);
+    }
+
+
+    @Test
+    void getLetterForPosition() {
+        final var alphabet = "abcdefghijklmnopqrstuvwxyz";
+        final String decryptionKey = "!)\"(£*%&><@abcdefghijklmno";
+
+        CodeCracker cc = new CodeCracker(alphabet, decryptionKey);
+
+        assertThat(cc.getForPosition(2, false)).isEqualTo("\"");
     }
 
     @Test
     void encryptLetter() {
         final String letter = "a";
-        final String alphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
-        final String decryptionKey = "! ) \" ( £ * % & > < @ a b c d e f g h i j k l m n o";
+        final var alphabet = "abcdefghijklmnopqrstuvwxyz";
+        final String decryptionKey = "!)\"(£*%&><@abcdefghijklmno";
 
         CodeCracker cc = new CodeCracker(alphabet, decryptionKey);
 
@@ -45,8 +55,8 @@ class CodeCrackerTest {
     @Test
     void encryptB() {
         final String letter = "b";
-        final String alphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
-        final String decryptionKey = "! ) \" ( £ * % & > < @ a b c d e f g h i j k l m n o";
+        final var alphabet = "abcdefghijklmnopqrstuvwxyz";
+        final String decryptionKey = "!)\"(£*%&><@abcdefghijklmno";
 
         CodeCracker cc = new CodeCracker(alphabet, decryptionKey);
 
@@ -56,8 +66,8 @@ class CodeCrackerTest {
     @Test
     void encryptWord() {
         final String word = "julius";
-        final String alphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
-        final String decryptionKey = "! ) \" ( £ * % & > < @ a b c d e f g h i j k l m n o";
+        final var alphabet = "abcdefghijklmnopqrstuvwxyz";
+        final String decryptionKey = "!)\"(£*%&><@abcdefghijklmno";
 
         CodeCracker cc = new CodeCracker(alphabet, decryptionKey);
 
@@ -67,8 +77,8 @@ class CodeCrackerTest {
     @Test
     void encryptWordTwo() {
         final String word = "not julius";
-        final String alphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
-        final String decryptionKey = "! ) \" ( £ * % & > < @ a b c d e f g h i j k l m n o";
+        final var alphabet = "abcdefghijklmnopqrstuvwxyz";
+        final String decryptionKey = "!)\"(£*%&><@abcdefghijklmno";
 
         CodeCracker cc = new CodeCracker(alphabet, decryptionKey);
 
@@ -78,8 +88,8 @@ class CodeCrackerTest {
     @Test
     void decryptWord() {
         final String word = "<ja>jh";
-        final String alphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
-        final String decryptionKey = "! ) \" ( £ * % & > < @ a b c d e f g h i j k l m n o";
+        final var alphabet = "abcdefghijklmnopqrstuvwxyz";
+        final String decryptionKey = "!)\"(£*%&><@abcdefghijklmno";
 
         CodeCracker cc = new CodeCracker(alphabet, decryptionKey);
 
@@ -89,8 +99,8 @@ class CodeCrackerTest {
     @Test
     void decryptWordTwo() {
         final String word = "cdi <ja>jh";
-        final String alphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
-        final String decryptionKey = "! ) \" ( £ * % & > < @ a b c d e f g h i j k l m n o";
+        final var alphabet = "abcdefghijklmnopqrstuvwxyz";
+        final String decryptionKey = "!)\"(£*%&><@abcdefghijklmno";
 
         CodeCracker cc = new CodeCracker(alphabet, decryptionKey);
 
