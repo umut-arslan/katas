@@ -1,18 +1,16 @@
 package com.code_cracker;
 
+import lombok.AllArgsConstructor;
+
 import java.util.Objects;
 
 /**
  * Hello world!
  */
-public class CodeCracker {
+@AllArgsConstructor
+class CodeCracker {
     private final String alphabet;
     private final String decryptionKey;
-
-    public CodeCracker(String alphabet, String decryptionKey) {
-        this.alphabet = alphabet;
-        this.decryptionKey = decryptionKey;
-    }
 
     public int getPositionInAlphabet(String letter) {
         String[] idx = alphabet.split(" ");
