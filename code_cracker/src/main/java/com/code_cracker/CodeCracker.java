@@ -1,19 +1,17 @@
 package com.code_cracker;
 
+import lombok.AllArgsConstructor;
+
 import java.util.Objects;
 
 /**
  * Hello world!
- *
  */
-public class CodeCracker
-{
+@AllArgsConstructor
+class CodeCracker {
     private final String alphabet;
     private final String decryptionKey;
-    public CodeCracker(String alphabet, String decryptionKey) {
-        this.alphabet = alphabet;
-        this.decryptionKey = decryptionKey;
-    }
+
     public int getPositionInAlphabet(String letter) {
         String[] idx = alphabet.split(" ");
         int pos = -1;
@@ -24,6 +22,7 @@ public class CodeCracker
         }
         return pos;
     }
+
     public int getPositionInDecryptionKey(String letter) {
         String[] idx = decryptionKey.split(" ");
         int pos = -1;
@@ -38,7 +37,7 @@ public class CodeCracker
     public String encrypt(String word) {
         StringBuilder encryptedWord = new StringBuilder();
         for (int i = 0; i < word.length(); i++) {
-           encryptedWord.append(getLetterForPosition(getPositionInAlphabet(String.valueOf(word.charAt(i)))));
+            encryptedWord.append(getLetterForPosition(getPositionInAlphabet(String.valueOf(word.charAt(i)))));
         }
         return encryptedWord.toString();
     }

@@ -1,58 +1,32 @@
 package com.code_cracker;
 
-import java.util.Arrays;
-import java.util.Objects;
+import lombok.AllArgsConstructor;
+
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Hello world!
- *
  */
-public class CodeCracker
-{
+@AllArgsConstructor
+class CodeCracker {
     private final String alphabet;
     private final String decryptionKey;
-    public CodeCracker(String alphabet, String decryptionKey) {
-        this.alphabet = alphabet;
-        this.decryptionKey = decryptionKey;
-    }
-    public int getPositionInAlphabet(final String letter) {
-        final String[] idx = alphabet.split(" ");
-        return Arrays.stream(idx).toList().indexOf(letter);
-    }
-    public int getPositionInDecryptionKey(final String letter) {
-        final String[] idx = decryptionKey.split(" ");
-        return Arrays.stream(idx).toList().indexOf(letter);
+
+    public int getPosition(final String letter, final boolean decrypt) {
+        return !decrypt ? alphabet.indexOf(letter) : decryptionKey.indexOf(letter);
     }
 
-    public String encrypt(final String word) {
-        return word.chars().mapToObj(i -> (char) i)
+    public String getForPosition(final int i, final boolean decrypt) {
+        return (i == -1) ? decrypt ? alphabet.substring(i, i + 1) : decryptionKey.substring(i, i + 1) : " ";
+    }
+
+    public String crypt(final String word, final boolean decrypt) {
+        return word
+                .chars()
+                .mapToObj(i -> (char) i)
                 .map(String::valueOf)
-                .map(this::getPositionInAlphabet).map(this::getLetterForPosition)
-                .collect(Collectors.joining());
-    }
-
-    public String getLetterForPosition(final int i) {
-        final String[] idx = decryptionKey.split(" ");
-        if (i == -1) {
-            return " ";
-        }
-        return idx[i];
-    }
-
-    public String getDecryptionForPosition(final int i) {
-        final String[] idx = alphabet.split(" ");
-        if (i == -1) {
-            return " ";
-        }
-        return idx[i];
-    }
-
-    public String decrypt(final String word) {
-        return word.chars().mapToObj(i -> (char) i)
-                .map(String::valueOf)
-                .map(this::getPositionInDecryptionKey).map(this::getDecryptionForPosition)
+                .map(letter -> getPosition(letter, decrypt))
+                .map(!decrypt ? (pos -> getForPosition(pos, false)) : (pos -> getForPosition(pos, true)))
                 .collect(Collectors.joining());
     }
 }
