@@ -39,11 +39,16 @@ public class MarsRover {
             this.position = point;
         }
     }
+
     public void move(String move) {
-        if ((move == "f" && direction == "E") || (move == "b" && direction == "W")) moveCheck(new Point(this.position.x+1, this.position.y));
-        else if ((move == "f" && direction == "W") || (move == "b" && direction == "E")) moveCheck(new Point(this.position.x-1, this.position.y));
-        else if ((move == "f" && direction == "N") || (move == "b" && direction == "S")) moveCheck(new Point(this.position.x, this.position.y+1));
-        else if ((move == "b" && direction == "N") || (move == "f" && direction == "S")) moveCheck(new Point(this.position.x, this.position.y-1));
+        if ((move == "f" && direction == "E") || (move == "b" && direction == "W"))
+            moveCheck(new Point(this.position.x + 1, this.position.y));
+        else if ((move == "f" && direction == "W") || (move == "b" && direction == "E"))
+            moveCheck(new Point(this.position.x - 1, this.position.y));
+        else if ((move == "f" && direction == "N") || (move == "b" && direction == "S"))
+            moveCheck(new Point(this.position.x, this.position.y + 1));
+        else if ((move == "b" && direction == "N") || (move == "f" && direction == "S"))
+            moveCheck(new Point(this.position.x, this.position.y - 1));
     }
 
     public Point getPosition() {
