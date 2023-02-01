@@ -33,4 +33,11 @@ public class MarsRover {
     public String getDirection() {
         return direction;
     }
+
+    public void turn(String toTurn) {
+        if ((this.direction == "S" && toTurn == "l") || (this.direction == "N" && toTurn == "r")) this.direction = "E";
+        else if ((this.direction == "W" && toTurn == "l") || (this.direction == "E" && toTurn == "r")) this.direction = "S";
+        else if ((this.direction == "N" && toTurn == "l") || (this.direction == "S" && toTurn == "r")) this.direction = "W";
+        else if ((this.direction == "E" && toTurn == "l") || (this.direction == "W" && toTurn == "r")) this.direction = "N";
+    }
 }
