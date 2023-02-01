@@ -21,9 +21,9 @@ class MarsRoverTest{
     }
 
     @Test
-    void moveBackwards() {
-        MarsRover rover = MarsRover.create(new Point(1, 1), "S");
-        rover.move("b");
-        assertThat(rover.getPosition()).isEqualTo(new Point(0,1));
+    void moveUp() {
+        MarsRover rover = MarsRover.create(new Point(1, 1), "N");
+        rover.move("f");
+        assertThat(rover.getPosition()).isEqualTo(new Point(1,2));
     }
 }
