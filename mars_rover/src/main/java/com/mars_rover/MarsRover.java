@@ -7,8 +7,8 @@ import java.awt.*;
  * Hello world!
  */
 public class MarsRover {
-    private Point position;
-    private String direction;
+    private final Point position;
+    private final String direction;
 
     private MarsRover(Point position, String direction) {
         this.position = new Point(position);
