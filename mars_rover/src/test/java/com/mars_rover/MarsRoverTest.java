@@ -46,4 +46,11 @@ class MarsRoverTest {
         rover.turn("l");
         assertThat(rover.getDirection()).isEqualTo("E");
     }
+
+    @Test
+    void turnRight() {
+        MarsRover rover = MarsRover.create(new Point(1, 1), "E");
+        rover.turn("r");
+        assertThat(rover.getDirection()).isEqualTo("S");
+    }
 }
