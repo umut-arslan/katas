@@ -29,4 +29,8 @@ public class MarsRover
     public Point getPosition() {
         return position;
     }
+
+    public String getDirection() {
+        return direction;
+    }
 }
