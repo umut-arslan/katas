@@ -32,4 +32,10 @@ class MarsRoverTest{
         rover.move("b");
         assertThat(rover.getPosition()).isEqualTo(new Point(1,0));
     }
+    @Test
+    void getDirection() {
+        MarsRover rover = MarsRover.create(new Point(1, 1), "S");
+        rover.move("b");
+        assertThat(rover.getDirection()).isEqualTo("S");
+    }
 }
