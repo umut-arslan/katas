@@ -2,8 +2,7 @@ package com.mars_rover;
 
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 import java.util.List;
 
 /**
@@ -18,6 +17,7 @@ public class MarsRover {
     private MarsRover(Point position, String direction) {
         this.position = new Point(position);
         this.direction = direction;
+        this.obstacles = Collections.emptyList();
     }
 
     private MarsRover(Point position, String direction, List<Point> obstacles) {
