@@ -45,23 +45,23 @@ class MarsRoverTest {
     @Test
     void turnLeft() {
         MarsRover rover = MarsRover.create(new Point(1, 1), "S");
-        rover.turn("l");
-        assertThat(rover.getDirection()).isEqualTo("E");
+        MarsRover newRover = rover.turn("l");
+        assertThat(newRover.getDirection()).isEqualTo("E");
     }
 
     @Test
     void turnRight() {
         MarsRover rover = MarsRover.create(new Point(1, 1), "E");
-        rover.turn("r");
-        assertThat(rover.getDirection()).isEqualTo("S");
+        MarsRover newRover = rover.turn("r");
+        assertThat(newRover.getDirection()).isEqualTo("S");
     }
 
     @Test
     void obstacleInfront() {
         List<Point> obstacles = Stream.of(new Point(1, 2)).toList();
         MarsRover rover = MarsRover.create(new Point(1, 1), "N", obstacles);
-        MarsRover movedRover = rover.move("f");
-        assertThat(movedRover.getPosition()).isEqualTo(new Point(1, 1));
+        MarsRover newRover = rover.move("f");
+        assertThat(newRover.getPosition()).isEqualTo(new Point(1, 1));
     }
 
     @Test
