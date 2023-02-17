@@ -18,22 +18,22 @@ class MarsRoverTest {
     @Test
     void moveForward() {
         MarsRover rover = MarsRover.create(new Point(1, 1), "E");
-        rover.move("f");
-        assertThat(rover.getPosition()).isEqualTo(new Point(2, 1));
+        MarsRover movedRover = rover.move("f");
+        assertThat(movedRover.getPosition()).isEqualTo(new Point(2, 1));
     }
 
     @Test
     void moveUp() {
         MarsRover rover = MarsRover.create(new Point(1, 1), "N");
-        rover.move("f");
-        assertThat(rover.getPosition()).isEqualTo(new Point(1, 2));
+        MarsRover movedRover = rover.move("f");
+        assertThat(movedRover.getPosition()).isEqualTo(new Point(1, 2));
     }
 
     @Test
     void moveDown() {
         MarsRover rover = MarsRover.create(new Point(1, 1), "N");
-        rover.move("b");
-        assertThat(rover.getPosition()).isEqualTo(new Point(1, 0));
+        MarsRover movedRover = rover.move("b");
+        assertThat(movedRover.getPosition()).isEqualTo(new Point(1, 0));
     }
 
     @Test
@@ -60,15 +60,15 @@ class MarsRoverTest {
     void obstacleInfront() {
         List<Point> obstacles = Stream.of(new Point(1, 2)).toList();
         MarsRover rover = MarsRover.create(new Point(1, 1), "N", obstacles);
-        rover.move("f");
-        assertThat(rover.getPosition()).isEqualTo(new Point(1, 1));
+        MarsRover movedRover = rover.move("f");
+        assertThat(movedRover.getPosition()).isEqualTo(new Point(1, 1));
     }
 
     @Test
     void nonObstacleInfront() {
         List<Point> obstacles = Stream.of(new Point(1, 3)).toList();
         MarsRover rover = MarsRover.create(new Point(1, 1), "N", obstacles);
-        rover.move("f");
-        assertThat(rover.getPosition()).isEqualTo(new Point(1, 2));
+        MarsRover movedRover = rover.move("f");
+        assertThat(movedRover.getPosition()).isEqualTo(new Point(1, 2));
     }
 }
