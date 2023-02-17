@@ -40,14 +40,6 @@ public class MarsRover {
 
     public MarsRover move(String move) {
         return MarsRover.create(new Point(getNewPosition(move)), this.direction, this.obstacles);
-//        if ((move == "f" && direction == "E") || (move == "b" && direction == "W"))
-//            moveCheck(new Point(this.position.x + 1, this.position.y));
-//        else if ((move == "f" && direction == "W") || (move == "b" && direction == "E"))
-//            moveCheck(new Point(this.position.x - 1, this.position.y));
-//        else if ((move == "f" && direction == "N") || (move == "b" && direction == "S"))
-//            moveCheck(new Point(this.position.x, this.position.y + 1));
-//        else if ((move == "b" && direction == "N") || (move == "f" && direction == "S"))
-//            moveCheck(new Point(this.position.x, this.position.y - 1));
     }
 
     private Point getNewPosition(String move) {
@@ -55,7 +47,6 @@ public class MarsRover {
                     int x = this.position.x, y = this.position.y;
 
                     if (i == 'f' && this.getDirection().equals("E") || i == 'b' && this.getDirection().equals("W"))
-//                        (this.moveCheck(this.position)) ? x += 1 : x += 1;
                         x += this.moveCheck(new Point(x+1,y)) ? 1 : 0;
                     else if (i == 'f' && this.getDirection().equals("W") || i == 'b' && this.getDirection().equals("E"))
                         x -= this.moveCheck(new Point(x-1,y)) ? 1 : 0;
@@ -79,13 +70,18 @@ public class MarsRover {
         return direction;
     }
 
-    public void turn(String toTurn) {
-        if ((this.direction == "S" && toTurn == "l") || (this.direction == "N" && toTurn == "r")) this.direction = "E";
-        else if ((this.direction == "W" && toTurn == "l") || (this.direction == "E" && toTurn == "r"))
-            this.direction = "S";
-        else if ((this.direction == "N" && toTurn == "l") || (this.direction == "S" && toTurn == "r"))
-            this.direction = "W";
-        else if ((this.direction == "E" && toTurn == "l") || (this.direction == "W" && toTurn == "r"))
-            this.direction = "N";
+    public MarsRover turn(String toTurn) {
+        return MarsRover.create(this.position, this.getNewTurn(toTurn), this.obstacles);
+    }
+
+    public String getNewTurn(String toTurn) {
+        return toTurn.chars().mapToObj(i -> {
+            String direction = "";
+            if ((this.direction == "S" && i == 'l') || (this.direction == "N" && i == 'r')) direction = "E";
+            if ((this.direction == "W" && i == 'l') || (this.direction == "E" && i == 'r')) direction = "S";
+            if ((this.direction == "N" && i == 'l') || (this.direction == "S" && i == 'r')) direction = "W";
+            if ((this.direction == "E" && i == 'l') || (this.direction == "W" && i == 'r')) direction = "N";
+            return direction;
+        }).reduce(new String(""), (subtotal, direction) -> new String(direction));
     }
 }
