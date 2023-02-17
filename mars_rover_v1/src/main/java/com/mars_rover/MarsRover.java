@@ -55,16 +55,16 @@ public class MarsRover {
                     int x = this.position.x, y = this.position.y;
 
                     if (i == 'f' && this.getDirection().equals("E") || i == 'b' && this.getDirection().equals("W"))
-                        x += 1;
-
+//                        (this.moveCheck(this.position)) ? x += 1 : x += 1;
+                        x += this.moveCheck(new Point(x+1,y)) ? 1 : 0;
                     else if (i == 'f' && this.getDirection().equals("W") || i == 'b' && this.getDirection().equals("E"))
-                        x -= 1;
+                        x -= this.moveCheck(new Point(x-1,y)) ? 1 : 0;
 
                     else if (i == 'f' && this.getDirection().equals("N") || i == 'b' && this.getDirection().equals("S"))
-                        y += 1;
+                        y += this.moveCheck(new Point(x,y+1)) ? 1 : 0;
 
                     else if (i == 'f' && this.getDirection().equals("S") || i == 'b' && this.getDirection().equals("N"))
-                        y -= 1;
+                        y -= this.moveCheck(new Point(x,y-1)) ? 1 : 0;
 
                     return new Point(x, y);
                 })
